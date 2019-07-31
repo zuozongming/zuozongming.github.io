@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>宗明的学习笔记</title>
+    <description></description>
+    <link>http://localhost:4004/</link>
+    <atom:link href="http://localhost:4004/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 19 Jul 2019 01:06:26 +0800</pubDate>
+    <lastBuildDate>Fri, 19 Jul 2019 01:06:26 +0800</lastBuildDate>
+    <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>hello jekyll!</title>
+        <description>当年创建 jekyll 时默认的一篇文章，没什么意义，我也一直没删除，留个纪念吧。</description>
+        <pubDate>Tue, 10 Feb 2015 23:14:54 +0800</pubDate>
+        <link>http://localhost:4004/2015/02/10/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4004/2015/02/10/welcome-to-jekyll/</guid>
+        
+        <category>jekyll</category>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+  </channel>
+</rss>
