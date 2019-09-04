@@ -1,0 +1,38 @@
+<p>[TOC]</p>
+
+<h1 id="192-word-count">192-word-count</h1>
+<h2 id="题目">题目</h2>
+<p>写一个 bash 脚本以统计一个文本文件 words.txt 中每个单词出现的频率。</p>
+
+<p>为了简单起见，你可以假设：</p>
+
+<p>words.txt只包括小写字母和 ’ ‘ 。
+每个单词只由小写字母组成。
+单词间由一个或多个空格字符分隔。
+示例:</p>
+
+<p>假设 words.txt 内容如下：
+`
+the day is sunny the the
+the sunny is is
+`
+你的脚本应当输出（以词频降序排列）：
+`
+the 4
+is 3
+sunny 2
+day 1
+说明:
+`
+不要担心词频相同的单词的排序问题，每个单词出现的频率都是唯一的。
+你可以使用一行 Unix pipes 实现吗？</p>
+<h2 id="代码">代码</h2>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat </span>words.txt |sed  <span class="s2">"s/ /</span><span class="se">\n</span><span class="s2">/g"</span> |sort |grep <span class="nt">-v</span> <span class="s2">"^$"</span>  |uniq <span class="nt">-c</span>|sort <span class="nt">-rn</span> |awk <span class="s1">'{print $2" "$1}'</span>
+</code></pre></div></div>
+
+<h2 id="注意事项">注意事项：</h2>
+<p>Mac OS X 的sed是BSD版本无法使用	可替换成<code class="highlighter-rouge">tr ' ' '\n'</code> 或 <code class="highlighter-rouge">sed -e 's/ /\'$'\n/g'</code></p>
+
+<h2 id="链接">链接：</h2>
+<p><a href="https://leetcode-cn.com/problems/word-frequency/">词频统计</a></p>
+

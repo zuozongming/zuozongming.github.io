@@ -1,0 +1,41 @@
+<p>[TOC]</p>
+
+<h1 id="49-heterotopic-word-groups">49-heterotopic-word-groups</h1>
+<h2 id="题目">题目</h2>
+<p>给定一个字符串数组，将字母异位词组合在一起。字母异位词指字母相同，但排列不同的字符串。</p>
+
+<p>示例:
+`
+输入: [“eat”, “tea”, “tan”, “ate”, “nat”, “bat”],
+输出:
+[
+  [“ate”,”eat”,”tea”],
+  [“nat”,”tan”],
+  [“bat”]
+]
+`
+说明：</p>
+
+<p>所有输入均为小写字母。
+不考虑答案输出的顺序。</p>
+
+<h2 id="代码">代码</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">groupAnagrams</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strs</span><span class="p">):</span>
+        <span class="s">"""
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """</span>
+        <span class="n">str_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">strs</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="s">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">str_dict</span><span class="p">:</span>
+                <span class="n">str_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span><span class="p">[]</span>
+            <span class="n">str_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">return</span>  <span class="n">str_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="注意事项">注意事项</h2>
+<h2 id="链接">链接</h2>
+<p><a href="https://leetcode-cn.com/problems/group-anagrams">字母异位词分组</a></p>
+
