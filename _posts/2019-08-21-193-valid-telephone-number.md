@@ -32,6 +32,15 @@ mathjax: true
 (123) 456-7890
 `
 ## 代码
+```shell
+awk --re-interval '/^([0-9]{3}-|\([0-9]{3}\) )[0-9]{3}-([0-9]{4})$/' file.txt
+```
 ## 注意事项
+awk 版本不同 部分版本需--re-interval 正则才能生效
+       -W re-interval
+       --re-interval
+              Enable the use of interval expressions in regular expression matching (see Regular Expressions, below).  Interval expressions were not traditionally available in the AWK language.  
+              The POSIX standard added them, to  make  awk  and
+              egrep consistent with each other.  However, their use is likely to break old AWK programs, so gawk only provides them if they are requested with this option, or when --posix is specified.
 ## 链接
 [有效电话号码](https://leetcode-cn.com/problems/valid-phone-numbers)
