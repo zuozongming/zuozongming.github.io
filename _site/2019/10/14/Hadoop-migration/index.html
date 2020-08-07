@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>192-word-count</title>
-    <meta name="description" content="词频统计">
+    <title>2019-10-14-Hadoop-migration</title>
+    <meta name="description" content="Hadoop迁移全流程总结">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4003/2019/08/21/192-word-count/">
+    <link rel="canonical" href="http://localhost:4003/2019/10/14/Hadoop-migration/">
     <link rel="alternate" type="application/rss+xml" title="宗明的学习笔记" href="http://localhost:4003/feed.xml ">
 
 
@@ -147,11 +147,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>192-word-count</h1>
+        <h1>2019-10-14-Hadoop-migration</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2019-08-21
+                <i class="fa fa-calendar"></i>2019-10-14
             </div>
 
             <div class="label-card">
@@ -173,11 +173,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#linux" title="Category: linux" rel="category">linux</a>&nbsp;
-    
-        <a href="/category/#shell" title="Category: shell" rel="category">shell</a>&nbsp;
-    
-        <a href="/category/#leetcode" title="Category: leetcode" rel="category">leetcode</a>
+        <a href="/category/#linux" title="Category: linux" rel="category">linux</a>
     
   
 
@@ -194,17 +190,11 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#%E5%B0%8F%E6%8A%80%E5%B7%A7" title="Tag: 小技巧" rel="tag">小技巧</a-->
-        <a href="/tag/#小技巧" title="Tag: 小技巧" rel="tag">小技巧</a>&nbsp;
+        <!--a href="/tag/#Hadoop" title="Tag: Hadoop" rel="tag">Hadoop</a-->
+        <a href="/tag/#Hadoop" title="Tag: Hadoop" rel="tag">Hadoop</a>&nbsp;
     
-        <!--a href="/tag/#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4" title="Tag: 常用命令" rel="tag">常用命令</a-->
-        <a href="/tag/#常用命令" title="Tag: 常用命令" rel="tag">常用命令</a>&nbsp;
-    
-        <!--a href="/tag/#%E5%88%B7%E9%A2%98" title="Tag: 刷题" rel="tag">刷题</a-->
-        <a href="/tag/#刷题" title="Tag: 刷题" rel="tag">刷题</a>&nbsp;
-    
-        <!--a href="/tag/#%E4%BB%A3%E7%A0%81" title="Tag: 代码" rel="tag">代码</a-->
-        <a href="/tag/#代码" title="Tag: 代码" rel="tag">代码</a>
+        <!--a href="/tag/#%E8%BF%81%E7%A7%BB" title="Tag: 迁移" rel="tag">迁移</a-->
+        <a href="/tag/#迁移" title="Tag: 迁移" rel="tag">迁移</a>
     
   
 
@@ -217,42 +207,29 @@
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <p>[TOC]</p>
 
-<h1 id="192-word-count">192-word-count</h1>
-<h2 id="题目">题目</h2>
-<p>写一个 bash 脚本以统计一个文本文件 words.txt 中每个单词出现的频率。</p>
+<p>#2019-10-14-Hadoop-migration
+##背景
+1.北京机房成本过高、机架新增困难,无法满足日益增长的集群资源使用需求。
+2.计划把Maybach、Pagani、Benz、Porsche、Cold 5个自有小集群合并成一个公司统一搭建运维大集群Saturn。
+##准备
+1.
+ 具体开始迁移时间
+ 每天迁移数据量大小
+ keytab打通联调时间 
+ 机器数量及成本，需要归还机器数量
+ 客户端提供制作
+ 部署集群配置参数提供 （与现有集群对照 防止任务执行失败）
+ 队列配额分配
+ 账号密码申请 （黑白、名单）
+ 目录权限
+ 冷备流程更换 (设置)
+6月21日
+1.确认集群规模
+2.
+##问题</p>
 
-<p>为了简单起见，你可以假设：</p>
-
-<p>words.txt只包括小写字母和 ’ ‘ 。
-每个单词只由小写字母组成。
-单词间由一个或多个空格字符分隔。
-示例:</p>
-
-<p>假设 words.txt 内容如下：
-`
-the day is sunny the the
-the sunny is is
-`
-你的脚本应当输出（以词频降序排列）：
-`
-the 4
-is 3
-sunny 2
-day 1
-说明:
-`
-不要担心词频相同的单词的排序问题，每个单词出现的频率都是唯一的。
-你可以使用一行 Unix pipes 实现吗？</p>
-<h2 id="代码">代码</h2>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat </span>words.txt |sed  <span class="s2">"s/ /</span><span class="se">\n</span><span class="s2">/g"</span> |sort |grep <span class="nt">-v</span> <span class="s2">"^$"</span>  |uniq <span class="nt">-c</span>|sort <span class="nt">-rn</span> |awk <span class="s1">'{print $2" "$1}'</span>
-</code></pre></div></div>
-
-<h2 id="注意事项">注意事项：</h2>
-<p>Mac OS X 的sed是BSD版本无法使用	可替换成<code class="highlighter-rouge">tr ' ' '\n'</code> 或 <code class="highlighter-rouge">sed -e 's/ /\'$'\n/g'</code></p>
-
-<h2 id="链接">链接：</h2>
-<p><a href="https://leetcode-cn.com/problems/word-frequency/">词频统计</a></p>
-
+<p>##收尾
+##总结</p>
 
         </article>
         <hr>
@@ -266,166 +243,13 @@ day 1
                 
                     
                 
-                    
-                
-                    
-                
             
                 
                     
                 
                     
                 
-                    
-                
-                    
-                
             
-        
-            
-            
-                
-                    
-                        
-                        <h2 id="similar_posts">Similar Posts</h2>
-                        <ul>
-                        
-                        <li class="relatedPost">
-                            <a href="/2019/09/05/49-heterotopic-word-groups/">49-heterotopic-word-groups
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                        
-                        <li class="relatedPost">
-                            <a href="/2019/08/21/193-valid-telephone-number/">193-valid-telephone-number
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                        
-                        <li class="relatedPost">
-                            <a href="/2019/08/07/Hadoop-Keytab/">Hadoop-Keytab
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                        
-                        <li class="relatedPost">
-                            <a href="/2019/07/22/linux-rm-%E6%81%A2%E5%A4%8D/">rm -rf 文件恢复
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
                 
                     
                 
@@ -440,26 +264,96 @@ day 1
                 
                     
                 
+            
+                
+                    
+                
+                    
+                
+            
+                
                     
                 
                     
                 
             
         
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
         
-            </ul>
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
         
 
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2019/08/07/Hadoop-Keytab/">Hadoop-Keytab</a></p>
+        <p><strong>上一篇</strong> <a href="/2019/09/05/49-heterotopic-word-groups/">49-heterotopic-word-groups</a></p>
         
     </div>
     <div class="nex">
 
-        
-        <p><strong>下一篇</strong> <a href="/2019/08/21/193-valid-telephone-number/">193-valid-telephone-number</a></p>
         
     </div>
 </div>
@@ -505,8 +399,6 @@ day 1
                     Content
                 </div>
                 <ul id="content-side" class="content-ul">
-                    
-                    <li><a href="#similar_posts">Similar Posts</a></li>
                     
                     <li><a href="#comments">Comments</a></li>
                 </ul>

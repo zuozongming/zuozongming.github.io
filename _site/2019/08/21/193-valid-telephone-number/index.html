@@ -137,6 +137,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -234,7 +236,15 @@
 (123) 456-7890
 `</p>
 <h2 id="代码">代码</h2>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">awk</span> <span class="nt">--re-interval</span> <span class="s1">'/^([0-9]{3}-|\([0-9]{3}\) )[0-9]{3}-([0-9]{4})$/'</span> file.txt
+</code></pre></div></div>
 <h2 id="注意事项">注意事项</h2>
+<p>awk 版本不同 部分版本需–re-interval 正则才能生效
+       -W re-interval
+       –re-interval
+              Enable the use of interval expressions in regular expression matching (see Regular Expressions, below).  Interval expressions were not traditionally available in the AWK language.<br />
+              The POSIX standard added them, to  make  awk  and
+              egrep consistent with each other.  However, their use is likely to break old AWK programs, so gawk only provides them if they are requested with this option, or when –posix is specified.</p>
 <h2 id="链接">链接</h2>
 <p><a href="https://leetcode-cn.com/problems/valid-phone-numbers">有效电话号码</a></p>
 
@@ -247,9 +257,64 @@
             
                 
                     
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
                         
                         <h2 id="similar_posts">Similar Posts</h2>
                         <ul>
+                        
+                        <li class="relatedPost">
+                            <a href="/2019/09/05/49-heterotopic-word-groups/">49-heterotopic-word-groups
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
                         
                         <li class="relatedPost">
                             <a href="/2019/08/21/192-word-count/">192-word-count
@@ -369,6 +434,8 @@
     </div>
     <div class="nex">
 
+        
+        <p><strong>下一篇</strong> <a href="/2019/09/05/49-heterotopic-word-groups/">49-heterotopic-word-groups</a></p>
         
     </div>
 </div>
